@@ -100,16 +100,21 @@ header{
 /* Marca translucida a toda pantalla, respirando */
 .hero-marca{
   position:absolute;top:50%;left:50%;width:min(126vw,1480px);max-width:none;
-  transform:translate(-50%,-50%) scale(1);opacity:.17;pointer-events:none;z-index:1;
-  mix-blend-mode:screen;
+  transform:translate(-50%,-50%) scale(1);opacity:.13;pointer-events:none;z-index:1;
+  mix-blend-mode:screen;filter:blur(1.4px);
   -webkit-mask-image:radial-gradient(closest-side,#000 42%,rgba(0,0,0,.55) 72%,transparent 100%);
   mask-image:radial-gradient(closest-side,#000 42%,rgba(0,0,0,.55) 72%,transparent 100%);
   animation:marcaRespira 15s ease-in-out infinite;
 }
 .hero-marca img{width:100%;height:auto;display:block}
+/* Velo que limpia la zona de texto sin apagar la marca */
+.hero-scrim{
+  position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:radial-gradient(820px 620px at 24% 50%,rgba(0,13,28,.86) 0%,rgba(0,13,28,.5) 52%,transparent 76%);
+}
 @keyframes marcaRespira{
-  0%,100%{opacity:.155;transform:translate(-50%,-50%) scale(1)}
-  50%{opacity:.26;transform:translate(-50%,-50%) scale(1.05)}
+  0%,100%{opacity:.115;transform:translate(-50%,-50%) scale(1)}
+  50%{opacity:.2;transform:translate(-50%,-50%) scale(1.05)}
 }
 @keyframes marcaRespira2{
   0%,100%{transform:scale(1)}
@@ -124,11 +129,11 @@ header{
 @media (prefers-reduced-motion:reduce){
   .hero-marca,.hero-logo,.glow{animation:none !important}
 }
-.glow{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none}
+.glow{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none;z-index:2}
 .glow.a{width:440px;height:440px;background:rgba(30,123,255,.55);top:-90px;right:6%;animation:float 13s ease-in-out infinite}
 .glow.b{width:320px;height:320px;background:rgba(0,59,122,.9);bottom:-70px;left:-60px;animation:float 17s ease-in-out infinite reverse}
 @keyframes float{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(22px,-26px,0)}}
-.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,64px);align-items:center}
+.hero-grid{position:relative;z-index:3;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,64px);align-items:center}
 .hero h1{font-size:clamp(34px,6.1vw,68px);font-weight:900;line-height:1.04;letter-spacing:-.03em;margin-bottom:22px}
 .hero h1 span{background:linear-gradient(120deg,var(--blue) 0%,var(--blue-soft) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero p.lead{font-size:clamp(16px,1.8vw,19px);margin-bottom:32px;max-width:54ch}
@@ -137,9 +142,9 @@ header{
 .trust span{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 12px var(--blue)}
 .hero-card{
-  background:linear-gradient(180deg,rgba(0,43,92,.55),rgba(0,17,38,.75));
+  background:linear-gradient(180deg,rgba(0,34,70,.80),rgba(0,10,22,.90));
   border:1px solid var(--line);border-radius:22px;padding:26px;
-  box-shadow:0 30px 70px rgba(0,0,0,.45);backdrop-filter:blur(6px);
+  box-shadow:0 30px 70px rgba(0,0,0,.45);backdrop-filter:blur(10px);
 }
 .hero-card h3{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-soft);font-weight:700;margin-bottom:18px}
 .pillars{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -300,6 +305,7 @@ body{padding-bottom:0}
 
 <section class="hero" id="top">
   <div class="hero-marca" aria-hidden="true"><img src="assets/logo-512.png" alt=""></div>
+  <div class="hero-scrim" aria-hidden="true"></div>
   <span class="glow a"></span><span class="glow b"></span>
   <div class="wrap hero-grid">
     <div>
