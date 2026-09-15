@@ -70,8 +70,8 @@ header{
 }
 .btn-primary{background:linear-gradient(135deg,var(--blue) 0%,#0f63e0 100%);color:#fff;box-shadow:0 12px 34px rgba(30,123,255,.32)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(30,123,255,.45)}
-.btn-ghost{border:1px solid rgba(199,217,242,.28);color:var(--white)}
-.btn-ghost:hover{border-color:var(--blue);background:rgba(30,123,255,.09)}
+.btn-ghost{border:1px solid rgba(126,169,255,.5);background:rgba(126,169,255,.09);color:var(--white)}
+.btn-ghost:hover{border-color:var(--blue);background:rgba(30,123,255,.16)}
 .btn-nav{padding:11px 20px;font-size:14px}
 
 /* HERO */
@@ -97,8 +97,8 @@ header{
 .hero h1 span{background:linear-gradient(120deg,var(--blue) 0%,var(--blue-soft) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero p.lead{font-size:clamp(16px,1.8vw,19px);margin-bottom:32px;max-width:54ch}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
-.trust{display:flex;gap:22px;flex-wrap:wrap;color:var(--muted);font-size:13.5px}
-.trust span{display:inline-flex;align-items:center;gap:8px}
+.trust{display:flex;gap:14px 22px;flex-wrap:wrap;color:var(--muted);font-size:13.5px}
+.trust span{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 12px var(--blue)}
 .hero-card{
   background:linear-gradient(180deg,rgba(0,43,92,.55),rgba(0,17,38,.75));
@@ -201,17 +201,39 @@ footer{border-top:1px solid var(--line);padding:38px 0;background:#000d1c}
 .wa:hover{transform:scale(1.07)}
 .wa svg{width:30px;height:30px;fill:#04240f}
 
+.menu-btn{display:none;align-items:center;gap:9px;background:rgba(255,255,255,.04);border:1px solid rgba(199,217,242,.30);border-radius:12px;padding:9px 13px;color:#fff;font-family:'Montserrat',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.menu-btn svg{width:16px;height:16px;stroke:#fff;stroke-width:2;fill:none}
+body{padding-bottom:0}
+
 @media (max-width:900px){
   .hero-grid{grid-template-columns:1fr;gap:34px}
   .hero{min-height:auto;padding:118px 0 72px}
-  .nav-links{display:none}
+  .nav{position:relative;flex-wrap:wrap}
+  .nav-links{
+    display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;
+    background:rgba(0,13,28,.98);border-bottom:1px solid var(--line);padding:4px 0 10px;
+    backdrop-filter:blur(16px);box-shadow:0 22px 40px rgba(0,0,0,.5);
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:15px 5vw;font-size:15.5px;border-bottom:1px solid rgba(199,217,242,.07);width:100%}
+  .menu-btn{display:inline-flex}
+  .btn-nav{display:none}
   .hero-card{padding:22px}
+  .foot{flex-direction:column;align-items:flex-start;gap:10px}
+  footer{padding-bottom:110px}
 }
 @media (max-width:560px){
   .btn{width:100%}
   .hero-cta{gap:10px}
   .pillars{grid-template-columns:1fr 1fr}
+  .pillar{font-size:12.4px;letter-spacing:.05em;padding:12px 8px}
   .wrap{width:90vw}
+  .wa{width:52px;height:52px;right:14px;bottom:16px}
+  .trust span{font-size:13px}
+}
+@media (max-width:400px){
+  .pillars{grid-template-columns:1fr}
+  .trust{flex-direction:column;gap:8px}
 }
 </style>
 </head>
@@ -220,13 +242,16 @@ footer{border-top:1px solid var(--line);padding:38px 0;background:#000d1c}
 <header>
   <div class="wrap nav">
     <a href="#top" class="wordmark"><span class="rey">REY</span><span class="perf">PERFORMANCE</span></a>
-    <nav class="nav-links">
+    <nav class="nav-links" id="menu">
       <a href="#quien">Quiénes somos</a>
       <a href="#servicios">Servicios</a>
       <a href="#metodo">Método</a>
       <a href="#resultados">Resultados</a>
     </nav>
     <a class="btn btn-primary btn-nav" href="https://wa.me/34615237818" target="_blank" rel="noopener">Hablemos</a>
+    <button class="menu-btn" id="mb" aria-label="Abrir menú" aria-expanded="false">
+      <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Menú
+    </button>
   </div>
 </header>
 
@@ -416,6 +441,19 @@ const io = new IntersectionObserver((es)=>{
   es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
 },{threshold:.14});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+const mb = document.getElementById('mb');
+const menu = document.getElementById('menu');
+if (mb && menu){
+  mb.addEventListener('click', ()=>{
+    const open = menu.classList.toggle('open');
+    mb.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
+    menu.classList.remove('open');
+    mb.setAttribute('aria-expanded','false');
+  }));
+}
 </script>
 </body>
 </html>
