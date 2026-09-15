@@ -9,7 +9,9 @@
 <meta property="og:description" content="Tu mejor versión, nuestro compromiso. Ciencia, planificación, disciplina y resultados.">
 <meta property="og:image" content="assets/antes-mujer-1.jpg">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23001126'/><text y='72' x='50' text-anchor='middle' font-size='62' font-family='Montserrat,sans-serif' font-weight='800' fill='%231e7bff'>R</text></svg>">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:image" content="assets/logo-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -56,10 +58,15 @@ header{
   backdrop-filter:blur(14px);background:rgba(0,13,28,.72);
   border-bottom:1px solid var(--line);
 }
-.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}
-.wordmark{display:flex;flex-direction:column;line-height:1}
-.wordmark .rey{font-size:20px;font-weight:900;letter-spacing:.06em}
-.wordmark .perf{font-size:9.5px;font-weight:600;letter-spacing:.34em;color:var(--blue-soft);margin-top:3px}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-logo{width:46px;height:46px;border-radius:50%;box-shadow:0 8px 22px rgba(0,0,0,.5)}
+.brand-txt{display:flex;flex-direction:column;line-height:1}
+.brand-txt .rey{font-size:18px;font-weight:900;letter-spacing:.07em}
+.brand-txt .perf{font-size:8.6px;font-weight:600;letter-spacing:.32em;color:var(--blue-soft);margin-top:3px}
+.hero-logo{width:clamp(96px,13vw,132px);height:auto;margin-bottom:22px;filter:drop-shadow(0 18px 44px rgba(30,123,255,.38))}
+.foot-logo{width:46px;height:46px;border-radius:50%;flex:none}
+.foot-brand{display:flex;align-items:center;gap:12px}
 .nav-links{display:flex;gap:26px;align-items:center}
 .nav-links a{font-size:14px;color:var(--muted);transition:color .25s}
 .nav-links a:hover{color:var(--white)}
@@ -230,6 +237,10 @@ body{padding-bottom:0}
   .wrap{width:90vw}
   .wa{width:52px;height:52px;right:14px;bottom:16px}
   .trust span{font-size:13px}
+  .brand-logo{width:38px;height:38px}
+  .brand-txt .rey{font-size:16px}
+  .brand-txt .perf{font-size:7.8px;letter-spacing:.24em}
+  .hero-logo{width:96px;margin-bottom:16px}
 }
 @media (max-width:400px){
   .pillars{grid-template-columns:1fr}
@@ -241,7 +252,10 @@ body{padding-bottom:0}
 
 <header>
   <div class="wrap nav">
-    <a href="#top" class="wordmark"><span class="rey">REY</span><span class="perf">PERFORMANCE</span></a>
+    <a href="#top" class="brand" aria-label="Rey Performance">
+      <img src="assets/logo-256.png" alt="Rey Performance, nutrición deportiva" class="brand-logo">
+      <span class="brand-txt"><span class="rey">REY</span><span class="perf">PERFORMANCE</span></span>
+    </a>
     <nav class="nav-links" id="menu">
       <a href="#quien">Quiénes somos</a>
       <a href="#servicios">Servicios</a>
@@ -259,6 +273,7 @@ body{padding-bottom:0}
   <span class="glow a"></span><span class="glow b"></span>
   <div class="wrap hero-grid">
     <div>
+      <img src="assets/logo-512.png" alt="Rey Performance" class="hero-logo" width="132" height="132">
       <div class="eyebrow">Nutrición deportiva · Entrenamiento personal</div>
       <h1>Tu mejor versión,<br><span>nuestro compromiso</span></h1>
       <p class="lead">Planificamos, acompañamos y transformamos. Nutrición deportiva personalizada y entrenamiento adaptado a tu cuerpo, tu deporte y tu vida real. Sin dietas milagro, sin planes copiados.</p>
@@ -425,7 +440,10 @@ body{padding-bottom:0}
 <footer>
   <div class="wrap">
     <div class="foot">
-      <div><strong>REY PERFORMANCE</strong> · Nutrición deportiva</div>
+      <div class="foot-brand">
+        <img src="assets/logo-256.png" alt="" class="foot-logo">
+        <div><strong>REY PERFORMANCE</strong><br>Nutrición deportiva</div>
+      </div>
       <div>Online y presencial (Toledo) · <a href="https://wa.me/34615237818" target="_blank" rel="noopener">WhatsApp</a> · <a href="https://www.instagram.com/rey.performance_/" target="_blank" rel="noopener">@rey.performance_</a></div>
     </div>
     <div class="demo-note">Web de demostración preparada por NEO Labs. Todos los textos, datos y fotografías son del negocio.</div>
