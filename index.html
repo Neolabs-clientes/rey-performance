@@ -100,7 +100,7 @@ header{
 /* Marca translucida a toda pantalla, respirando */
 .hero-marca{
   position:absolute;top:50%;left:50%;width:min(126vw,1480px);max-width:none;
-  transform:translate(-50%,-50%) scale(1);opacity:.10;pointer-events:none;z-index:1;
+  transform:translate(-50%,-50%) scale(1);opacity:.17;pointer-events:none;z-index:1;
   mix-blend-mode:screen;
   -webkit-mask-image:radial-gradient(closest-side,#000 42%,rgba(0,0,0,.55) 72%,transparent 100%);
   mask-image:radial-gradient(closest-side,#000 42%,rgba(0,0,0,.55) 72%,transparent 100%);
@@ -108,8 +108,8 @@ header{
 }
 .hero-marca img{width:100%;height:auto;display:block}
 @keyframes marcaRespira{
-  0%,100%{opacity:.085;transform:translate(-50%,-50%) scale(1)}
-  50%{opacity:.155;transform:translate(-50%,-50%) scale(1.045)}
+  0%,100%{opacity:.155;transform:translate(-50%,-50%) scale(1)}
+  50%{opacity:.26;transform:translate(-50%,-50%) scale(1.05)}
 }
 @keyframes marcaRespira2{
   0%,100%{transform:scale(1)}
